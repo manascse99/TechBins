@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Accounting Software - TechLens</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        .navbar .logo {
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .navbar .logo span {
+            color: #007bff;
+        }
+        .search-bar-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .apps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .app-box {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .app-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .app-box img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .app-box h4 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .reviews-container {
+            margin-top: 20px;
+        }
+        .review-box {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .review-box img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+        .review-content {
+            text-align: left;
+        }
+        .review-content h5 {
+            margin: 0;
+            font-size: 1em;
+            color: #333;
+        }
+        .review-content p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="index.html" class="logo">TECH<span>LENS</span></a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar-container">
+        <input
+            type="text"
+            class="search-bar"
+            id="searchBar"
+            placeholder="Search for accounting software..."
+            onkeyup="filterApps()"
+        >
+    </div>
+
+    <!-- Accounting Software Section -->
+    <h2 class="section-title">Top Accounting Software</h2>
+    <div class="apps-container" id="appsContainer">
+        <!-- QuickBooks -->
+        <div class="app-box">
+            <img src="https://via.placeholder.com/200" alt="QuickBooks">
+            <h4>QuickBooks</h4>
+            <div class="reviews-container">
+                <div class="review-box">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User1">
+                    <div class="review-content">
+                        <h5>Rajat Singh</h5>
+                        <p>QuickBooks is user-friendly and perfect for small businesses.</p>
+                    </div>
+                </div>
+                <div class="review-box">
+                    <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="User2">
+                    <div class="review-content">
+                        <h5>Ananya Sinha</h5>
+                        <p>Good software but the pricing can be a bit steep for startups.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tally -->
+        <div class="app-box">
+            <img src="https://via.placeholder.com/200" alt="Tally">
+            <h4>Tally</h4>
+            <div class="reviews-container">
+                <div class="review-box">
+                    <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="User3">
+                    <div class="review-content">
+                        <h5>Vikas Gupta</h5>
+                        <p>Reliable for GST filing, though the interface feels outdated.</p>
+                    </div>
+                </div>
+                <div class="review-box">
+                    <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="User4">
+                    <div class="review-content">
+                        <h5>Priyanka Sharma</h5>
+                        <p>Best for small businesses, but lacks integrations with modern tools.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add More Software Here -->
+    </div>
+
+    <script>
+        function filterApps() {
+            var input, filter, appsContainer, apps, appBox, appName, i, txtValue;
+            input = document.getElementById('searchBar');
+            filter = input.value.toLowerCase();
+            appsContainer = document.getElementById("appsContainer");
+            apps = appsContainer.getElementsByClassName('app-box');
+
+            for (i = 0; i < apps.length; i++) {
+                appBox = apps[i];
+                appName = appBox.getElementsByTagName("h4")[0];
+                txtValue = appName.textContent || appName.innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    appBox.style.display = "";
+                } else {
+                    appBox.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
